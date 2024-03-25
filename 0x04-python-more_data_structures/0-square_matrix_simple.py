@@ -7,8 +7,7 @@ def square_matrix_simple(matrix=[]):
             squared_row.append(element ** 2)
         matrixA.append(squared_row)
     return matrixA
-
-   # x = []
-   # for i in matrix:
-       # x.append(list(map(lambda x : x ** 2, i)))
-   # return(x)
+    # x = []
+    # for i in matrix:
+    # x.append(list(map(lambda x : x ** 2, i)))
+    # return(x)
