@@ -2,5 +2,5 @@
 # 0-square.py by Des
 """Defines a square"""
 class Square:
-    """Does nothing"""
-    pass
+    def __init__(self, size):
+        self.__size = size
