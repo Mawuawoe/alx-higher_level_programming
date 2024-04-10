@@ -50,7 +50,10 @@ class Rectangle:
         rectangle = ""
         for i in range(self.__height):
             for j in range(self.__width):
-                rectangle += Rectangle.print_symbol
+                try:
+                    rectangle += self.print_symbol
+                except Exception:
+                    rectangle += Rectangle.print_symbol
             if i < self.__height - 1:
                 rectangle += '\n'
         return rectangle
