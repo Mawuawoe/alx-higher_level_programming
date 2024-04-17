@@ -22,7 +22,7 @@ def matrix_divided(matrix, div):
                             "integers/floats")
         row_lengths = []
         row_lengths.append(len(row))
-        if len(set(row_lengths)) != 1:
+        if (len(set(row_lengths)) != 1):
             raise TypeError("Each row of the matrix must have the same size")
         result = []
         for i in row:
