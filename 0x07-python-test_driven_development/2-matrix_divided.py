@@ -17,11 +17,8 @@ def matrix_divided(matrix, div):
         raise ZeroDivisionError("division by zero")
     new_matrix = []
     row_lengths = []
-    print("why")
     for row in matrix:
-        print("why")
         if not isinstance(row, list):
-            print("why")
             raise TypeError("matrix must be a matrix (list of lists) of "
                             "integers/floats")
         row_lengths.append(len(row))
