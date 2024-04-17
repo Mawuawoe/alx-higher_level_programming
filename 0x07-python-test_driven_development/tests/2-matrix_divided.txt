@@ -52,7 +52,7 @@ Invalid Matrices
 The parameter ``matrix`` must be a list of lists consisting of either ints or
 floats. If ``matrix`` is not a list, a TypeError is raised.
 
-    >>> matix = "school"
+    >>> matrix = "school"
     >>> print(matrix_divided(matrix, 3))
     Traceback (most recent call last):
     TypeError: matrix must be a matrix (list of lists) of integers/floats
