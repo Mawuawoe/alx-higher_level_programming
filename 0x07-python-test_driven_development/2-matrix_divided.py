@@ -8,7 +8,7 @@ def matrix_divided(matrix, div):
     """
     this function divides all elements of a matrix by a given number
     """
-    if not isinstance(matrix, list):
+    if (not isinstance(matrix, list)) or matrix == []:
         raise TypeError("matrix must be a matrix (list of lists) of "
                         "integers/floats")
     if not (isinstance(div, int) or isinstance(div, float)):
