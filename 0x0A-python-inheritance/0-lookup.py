@@ -7,7 +7,7 @@ and methods of an object
 def lookup(obj):
     """ A function that return a list of attribute
     and modules of an object
-    
+
     Arg:
         obj - the object
     """
