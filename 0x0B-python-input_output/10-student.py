@@ -14,10 +14,9 @@ class Student:
         """
         Return the __dict__ of an object
         """
-        if type(attrs) is list:
-            for ele in attrs:
-                if type(ele) is str:
-                    return {k: getattr(self, k) for k in attrs
-                            if hasattr(self, k)}
+        if (type(attrs) is list and
+                all(type(ele) is str for ele in attrs)):
+            return {k: getattr(self, k) for k in attrs
+                    if hasattr(self, k)}
 
         return self.__dict__
