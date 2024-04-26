@@ -3,8 +3,6 @@
 This module contain a class Rectangle
 that inherite from base
 """
-
-
 from models.base import Base
 
 
@@ -12,8 +10,6 @@ class Rectangle(Base):
     """
     Class rectangle
     """
-
-
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialises obj attributes"""
         self.width = width
@@ -56,7 +52,7 @@ class Rectangle(Base):
         return self.__x
 
     @x.setter
-    def height(self, value):
+    def x(self, value):
         """set x"""
         if not isinstance(value, int):
             raise TypeError('height must be an integer')
@@ -70,7 +66,7 @@ class Rectangle(Base):
         return self.__y
 
     @y.setter
-    def height(self, value):
+    def y(self, value):
         """set y"""
         if not isinstance(value, int):
             raise TypeError('height must be an integer')
