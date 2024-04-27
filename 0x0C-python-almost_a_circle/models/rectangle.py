@@ -95,10 +95,12 @@ class Rectangle(Base):
         print(rectangle)
 
     def __str__(self):
+        """what you will get if you print(obj/r1)"""
         return "[Rectangle] ({}) {}/{} - {}/{}"\
             .format(self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args):
+        """passing variable position arg"""
         if args and len(args) != 0:
             a = 0
             for arg in args:
