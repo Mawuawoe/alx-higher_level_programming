@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import unittest
 import sys
-"""sys.path.append('..')"""
+# sys.path.append('..')
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -187,6 +187,14 @@ class test_rectangle(unittest.TestCase):
         '''
         with self.assertRaises(TypeError):
             rect = Rectangle(5, 5, 8, 1.07)
+    
+    def test_area(self):
+        rect = Rectangle(2, 3, 0, 0, 92)
+        self.assertEqual(rect.area(), 6)
+
+    def test_print(self):
+        r = Rectangle(5, 10, 8, 7, 88)
+        self.assertEqual(r.__str__(), "[Rectangle] (88) 8/7 - 5/10")
 
 
 if __name__ == '__main__':
