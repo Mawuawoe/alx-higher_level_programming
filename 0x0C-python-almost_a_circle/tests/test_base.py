@@ -16,42 +16,42 @@ class test_base(unittest.TestCase):
     '''
     def test_id_none(self):
         '''
-            Sending no id
+            when you pass in no id
         '''
         b = Base()
         self.assertEqual(1, b.id)
 
     def test_id(self):
         '''
-            Sending a valid id
+            when you pass in a valid id
         '''
         b = Base(50)
         self.assertEqual(50, b.id)
 
     def test_id_zero(self):
         '''
-            Sending an id 0
+            for an id = 0
         '''
         b = Base(0)
         self.assertEqual(0, b.id)
 
     def test_id_negative(self):
         '''
-            Sending a negative id
+            for a negative id
         '''
         b = Base(-20)
         self.assertEqual(-20, b.id)
 
     def test_id_string(self):
         '''
-            Sending an id that is not an int
+            for an id that is not an int
         '''
         b = Base("Betty")
         self.assertEqual("Betty", b.id)
 
     def test_id_list(self):
         '''
-            Sending an id that is not an int
+            for an id that is not an int
         '''
         b = Base([1, 2, 3])
         self.assertEqual([1, 2, 3], b.id)
