@@ -216,6 +216,14 @@ class test_rectangle(unittest.TestCase):
         self.r.update(10, 10, 10, 10, 10)
         self.assertEqual(self.r.y, 10)
 
+    def test_update_kwarg(self):
+        self.r.update(id = 20, width = 20, height = 20, x = 20, y = 20)
+        self.assertEqual(self.r.id, 20)
+        self.assertEqual(self.r.width, 20)
+        self.assertEqual(self.r.height, 20)
+        self.assertEqual(self.r.x, 20)
+        self.assertEqual(self.r.y, 20)
+
 
 if __name__ == '__main__':
     unittest.main()
