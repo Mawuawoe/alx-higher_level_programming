@@ -243,6 +243,13 @@ class test_rectangle(unittest.TestCase):
                     'id': 89, 'width': 10,
                     'height': 10})        
 
+    def test_missing_width(self):
+        '''
+            Expecting an error because width is missing
+        '''
+        with self.assertRaises(TypeError):
+            Rectangle(1)
+
 
 if __name__ == '__main__':
     unittest.main()
