@@ -224,6 +224,13 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(self.r.x, 20)
         self.assertEqual(self.r.y, 20)
 
+    def test_update_dict_list(self):
+        '''
+            Testing the update method with **kwargs and *args
+        '''
+        self.r.update(1000, y=1, width=2, x=3, id=89)
+        self.assertEqual(1000, self.r.id)
+
 
 if __name__ == '__main__':
     unittest.main()
