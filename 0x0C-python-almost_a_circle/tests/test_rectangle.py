@@ -231,6 +231,18 @@ class test_rectangle(unittest.TestCase):
         self.r.update(1000, y=1, width=2, x=3, id=89)
         self.assertEqual(1000, self.r.id)
 
+    def test_to_dictionary(self):
+        rect_2 = Rectangle(10,10,0,0,89)
+        rect_2_dict = rect_2.to_dictionary()
+        self.assertEqual(type(rect_2_dict), dict)
+
+    def test_dict(self):
+        rect_2 = Rectangle(10,10,0,0,89)
+        rect_2_dict = rect_2.to_dictionary()
+        self.assertEqual(rect_2_dict, {'x': 0, 'y': 0,
+                    'id': 89, 'width': 10,
+                    'height': 10})        
+
 
 if __name__ == '__main__':
     unittest.main()
