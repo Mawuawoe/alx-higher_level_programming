@@ -2,10 +2,14 @@
 """
 Test for Base
 """
+
+
 import unittest
 import sys
+sys.path.append('..')
 from models.base import Base
-# sys.path.append('..')
+from models.rectangle import Rectangle
+from models.square import Square
 
 
 '''
@@ -72,6 +76,31 @@ class test_base(unittest.TestCase):
         '''
         b = Base((8,))
         self.assertEqual((8,), b.id)
+
+    def test_to_json_string(self):
+        s1 = Rectangle(10, 10, 2, 3, 89)
+        s1_dict = s1.to_dictionary()
+        s1_json_string = Base.to_json_string([s1_dict])
+        self.assertEqual(type(s1_json_string), str)
+        self.assertEqual(s1_json_string, '[{"x": 2, "y": 3, "id": 89, "width": 10, "height": 10}]')
+
+    def test_to_json_None(self):
+        '''
+            Testing the json string
+        '''
+        sq = Square(1, 0, 0, 609)
+        json_dict = sq.to_dictionary()
+        json_string = Base.to_json_string(None)
+        self.assertEqual(json_string, "[]")
+
+    def test_to_json_Empty(self):
+        '''
+            Testing the json string
+        '''
+        sq = Square(1, 0, 0, 609)
+        json_dict = sq.to_dictionary()
+        json_string = Base.to_json_string([])
+        self.assertEqual(json_string, "[]")
 
 
 if __name__ == '__main__':
