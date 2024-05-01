@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import unittest
 import sys
-sys.path.append('..')
 from models.base import Base
+# sys.path.append('..')
 
 
 '''
@@ -69,6 +69,7 @@ class test_base(unittest.TestCase):
         '''
         b = Base((8,))
         self.assertEqual((8,), b.id)
+
 
 if __name__ == '__main__':
     unittest.main()

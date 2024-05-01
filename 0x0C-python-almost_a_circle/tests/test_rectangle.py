@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import unittest
 import sys
-sys.path.append('..')
 from models.base import Base
 from models.rectangle import Rectangle
+# sys.path.append('..')
 
 
 class Test_Rectanle(unittest.TestCase):
