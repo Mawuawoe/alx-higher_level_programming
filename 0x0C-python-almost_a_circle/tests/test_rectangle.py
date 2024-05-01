@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Test for Rectangle
+"""
 import unittest
 import sys
 # sys.path.append('..')
