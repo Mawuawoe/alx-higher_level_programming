@@ -1,12 +1,19 @@
 #!/usr/bin/python3
 import unittest
 import sys
+"""sys.path.append('..')"""
 from models.base import Base
 from models.rectangle import Rectangle
-# sys.path.append('..')
+
 
 
 class Test_Rectanle(unittest.TestCase):
+
+    def setUp(self):
+        self.r3 = Rectangle(2, 10, 0, 0, 12)
+
+    def tearDown (self):
+        del self.r3
     """
     test if Rectanle is a subclass of Base
     """
@@ -15,19 +22,11 @@ class Test_Rectanle(unittest.TestCase):
 
     """testing the id of rectangle """
     def test_rectangle_id(self):
-        r1 = Rectangle(10, 2)
-        self.assertEqual(r1.id, 1)
-
-        r2 = Rectangle(2, 10)
-        self.assertEqual(r2.id, 2)
-
-        r3 = Rectangle(2, 10, 0, 0, 12)
-        self.assertEqual(r3.id, 12)
+        self.assertEqual(self.r3.id, 12)
 
     """test for width"""
     def test_width(self):
-        r1 = Rectangle(10, 2)
-        self.assertEqual(r1.width, 10)
+        self.assertEqual(self.r3.width, 2)
 
     """width must be an integer"""
     def test_width_2(self):
@@ -41,8 +40,7 @@ class Test_Rectanle(unittest.TestCase):
 
     """test for height"""
     def test_height(self):
-        r = Rectangle(10, 3, 0, 0, 12)
-        self.assertEqual(r.height, 3)
+        self.assertEqual(self.r3.height, 10)
 
     """width must be an integer"""
     def test_height_2(self):
@@ -56,8 +54,8 @@ class Test_Rectanle(unittest.TestCase):
 
     """test for x"""
     def test_x(self):
-        r = Rectangle(10, 3, 1, 0, 12)
-        self.assertEqual(r.x, 1)
+        self.r3.x = 54
+        self.assertEqual(self.r3.x, 54)
 
     """x must be an integer"""
     def test_x_2(self):
@@ -69,10 +67,10 @@ class Test_Rectanle(unittest.TestCase):
         with self.assertRaises(ValueError):
             r1 = Rectangle(10, 2, -2, 0, 10)
 
-    """test for x"""
+    """test for y"""
     def test_y(self):
-        r = Rectangle(10, 3, 1, 0, 12)
-        self.assertEqual(r.y, 0)
+        self.r3.y = 64
+        self.assertEqual(self.r3.y, 64)
 
     """y must be an integer"""
     def test_y_2(self):
