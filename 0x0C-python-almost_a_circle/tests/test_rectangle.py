@@ -7,85 +7,186 @@ from models.rectangle import Rectangle
 
 
 
-class Test_Rectanle(unittest.TestCase):
+class test_rectangle(unittest.TestCase):
+    '''
+        Testing rectangle
+    '''
 
     def setUp(self):
-        self.r3 = Rectangle(2, 10, 0, 0, 12)
+        '''
+            Initializing instance with width and height
+            parameters
+        '''
+        self.r = Rectangle(5, 10)
 
-    def tearDown (self):
-        del self.r3
-    """
-    test if Rectanle is a subclass of Base
-    """
-    def test_rectangle_issubclass(self):
-        self.assertTrue(issubclass(Rectangle, Base))
+    def tearDown(self):
+        '''
+            Deleting created instance
+        '''
+        del self.r
 
-    """testing the id of rectangle """
-    def test_rectangle_id(self):
-        self.assertEqual(self.r3.id, 12)
-
-    """test for width"""
     def test_width(self):
-        self.assertEqual(self.r3.width, 2)
+        '''
+            Testing the Rectangle width getter
+        '''
+        self.assertEqual(5, self.r.width)
 
-    """width must be an integer"""
-    def test_width_2(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle("10", 2)
-
-    """width must be > 0"""
-    def test_width_3(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(-10, 2)
-
-    """test for height"""
     def test_height(self):
-        self.assertEqual(self.r3.height, 10)
+        '''
+            Testing the Rectangle height getter
+        '''
+        self.assertEqual(10, self.r.height)
 
-    """width must be an integer"""
-    def test_height_2(self):
-        with self.assertRaises(TypeError):
-            r = Rectangle(10, "2")
-
-    """height must be > 0"""
-    def test_height_3(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(10, -2)
-
-    """test for x"""
     def test_x(self):
-        self.r3.x = 54
-        self.assertEqual(self.r3.x, 54)
+        '''
+            Testing Rectangle x getter and setter
+        '''
 
-    """x must be an integer"""
-    def test_x_2(self):
-        with self.assertRaises(TypeError):
-            r = Rectangle(10, 2, '1', 0, 11)
+        self.r.x = 54
+        self.assertEqual(54, self.r.x)
+        self.assertEqual(0, self.r.y)
 
-    """x must be >= 0"""
-    def test_x_3(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(10, 2, -2, 0, 10)
-
-    """test for y"""
     def test_y(self):
-        self.r3.y = 64
-        self.assertEqual(self.r3.y, 64)
+        '''
+            Testing Rectangle y getter and setter
+        '''
 
-    """y must be an integer"""
-    def test_y_2(self):
+        self.r.y = 45
+        self.assertEqual(45, self.r.y)
+        self.assertEqual(0, self.r.x)
+
+    def test_arectangle_id(self):
+        '''
+            Test the id for Rectangle
+        '''
+        rect = Rectangle(1, 3, 0, 0, 199)
+        self.assertEqual(199, rect.id)
+
+    def test_width_string(self):
+        '''
+            Testing for other than int
+        '''
         with self.assertRaises(TypeError):
-            r = Rectangle(10, 2, 1, '2', 11)
+            rect = Rectangle("1", 5)
 
-    """y must be >= 0"""
-    def test_y_3(self):
+    def test_width_list(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle([10, 6], 5)
+
+    def test_height_string(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, "5")
+
+    def test_height_list(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(5, [10, 6])
+
+    def test_x_string(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, 5, "46")
+
+    def test_x_list(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, 5, [10, 6])
+
+    def test_y_string(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, 5, 7, "46")
+
+    def test_x_list(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, 5, 7, [10, 6])
+
+    def test_width_negative(self):
+        '''
+            Testing with negative int
+        '''
         with self.assertRaises(ValueError):
-            r1 = Rectangle(10, 2, 2, -1, 10)
+            rect = Rectangle(-4, 5)
 
-    """Test for area"""
-    def test_area(self):
-        ra = Rectangle(2, 3, 0, 0, 5)
-        self.assertEqual(ra.area(), 6)
+    def test_height_negative(self):
+        '''
+            Testing with negative int
+        '''
+        with self.assertRaises(ValueError):
+            rect = Rectangle(4, -5)
+
+    def test_x_negative(self):
+        '''
+            Testing with negative int
+        '''
+        with self.assertRaises(ValueError):
+            rect = Rectangle(4, 5, -3)
+
+    def test_y_negative(self):
+        '''
+            Testing with negative int
+        '''
+        with self.assertRaises(ValueError):
+            rect = Rectangle(4, 5, 2, -3)
+
+    def test_width_zero(self):
+        '''
+            Testing with negative int
+        '''
+        with self.assertRaises(ValueError):
+            rect = Rectangle(0, 5)
+
+    def test_height_zero(self):
+        '''
+            Testing with negative int
+        '''
+        with self.assertRaises(ValueError):
+            rect = Rectangle(8, 0)
+
+    def test_width_float(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1.07, 5)
+
+    def test_height_float(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(5, 1.07)
+
+    def test_x_float(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(5, 8, 1.07)
+
+    def test_y_float(self):
+        '''
+            Testing for other than int
+        '''
+        with self.assertRaises(TypeError):
+            rect = Rectangle(5, 5, 8, 1.07)
 
 
 if __name__ == '__main__':
