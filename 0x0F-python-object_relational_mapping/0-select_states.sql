@@ -14,4 +14,5 @@ INSERT INTO states (name)
 VALUES ("California"), ("Arizona"), ("Texas"), ("New York"), ("Nevada");
 
 SELECT *
-FROM states;
+FROM states
+WHERE name = 'Arizona';
