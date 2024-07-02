@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     stateName = sys.argv[4]
 
-    sql = "SELECT * FROM states WHERE name = '{}';".format(stateName)
+    sql = "SELECT * FROM states WHERE name = BINARY '{}';".format(stateName)
 
     cursor.execute(sql)
     results = cursor.fetchall()
