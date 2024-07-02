@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """
 A script that
-that lists all cities from the database hbtn_0e_4_usa
-JOIN data from the states table
+takes in the name of a state as an argument and
+lists all cities of that state,
+using the database hbtn_0e_4_usa
+Dallas, Houston, Austin
 """
 
 import MySQLdb
@@ -15,6 +17,7 @@ if __name__ == '__main__':
     username = sys.argv[1]
     userpasswd = sys.argv[2]
     dbname = sys.argv[3]
+    stateName = sys.argv[4]
 
     db = MySQLdb.connect(
         host="localhost",
@@ -28,14 +31,15 @@ if __name__ == '__main__':
 
     # Use parameterized query to prevent SQL injection
     sql = """
-    SELECT cities.id, cities.name, states.name
+    SELECT cities.name
     FROM cities
-    JOIN states ON cities.state_id = states.id;
-    """
-    cursor.execute(sql)
+    JOIN states ON cities.state_id = states.id
+    WHERE states.name = BINARY %s;"""
+
+    cursor.execute(sql, (stateName,))
 
     results = cursor.fetchall()
-    for row in results:
-        print(row)
+    city_names = [row[0] for row in results]
+    print(", ".join(city_names))
 
     db.close()
