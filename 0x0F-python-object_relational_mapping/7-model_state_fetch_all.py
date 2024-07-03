@@ -29,7 +29,5 @@ if __name__ == "__main__":
     session = Session()
 
     states = session.query(State).all()
-    i = 1
     for state in states:
-        print(f'{i}: {state.name}')
-        i = i + 1
+        print(f'{state.id}: {state.name}')
