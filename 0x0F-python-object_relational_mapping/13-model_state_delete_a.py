@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-A script that deletes all State objects from a database that contain the letter 'a'.
+A script that deletes all State objects
+from a database that contain the letter 'a'.
 It takes the user, password, and database name as command line arguments.
 """
 
@@ -9,6 +10,8 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 import sys
 from urllib.parse import quote_plus
+
+BATCH_SIZE = 100  # Number of records to process in each batch
 
 if __name__ == "__main__":
     """
@@ -25,15 +28,19 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Fetch all states containing the letter 'a'
-    states = session.query(State).filter(State.name.like('%a%')).all()
+    try:
+        # Fetch and delete states in batches
+        while True:
+            states = session.query(State)\
+                .filter(State.name.like('%a%')).limit(BATCH_SIZE).all()
+            if not states:
+                break
+            for state in states:
+                session.delete(state)
+            session.commit()
 
-    # Loop to delete each state
-    for state in states:
-        session.delete(state)
-    
-    # Commit the changes
-    session.commit()
-
-    # Close the session
-    session.close()
+    except Exception:
+        session.rollback()
+    finally:
+        # Close the session
+        session.close()
