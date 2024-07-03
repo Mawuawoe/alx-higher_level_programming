@@ -4,11 +4,13 @@ A script that deletes all State objects from a database that contain the letter 
 It takes the user, password, and database name as command line arguments.
 """
 
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 import sys
 from urllib.parse import quote_plus
+
 
 if __name__ == "__main__":
     """
