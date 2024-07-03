@@ -26,11 +26,12 @@ if __name__ == "__main__":
     session = Session()
 
     # Fetch all state containing the letter a
-    states = session.query(State).filter(State.name.like('%a%')).all()
+    states = session.query(State).filter(State.name.contains('a'))
 
     #loop to delete
-    for state in states:
-        session.delete(state)
+    if states is not None:
+        for state in states:
+            session.delete(state)
     session.commit()
 
     session.close()
