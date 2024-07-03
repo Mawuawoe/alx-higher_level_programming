@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-A script that deletes all State objects
-from a database that contain the letter 'a'.
+A script that deletes all State objects from a database that contain the letter 'a'.
 It takes the user, password, and database name as command line arguments.
 """
 
@@ -32,6 +31,9 @@ if __name__ == "__main__":
     # Loop to delete each state
     for state in states:
         session.delete(state)
-
+    
     # Commit the changes
     session.commit()
+
+    # Close the session
+    session.close()
