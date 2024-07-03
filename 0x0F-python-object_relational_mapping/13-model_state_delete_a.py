@@ -28,19 +28,19 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    try:
+    # try:
         # Fetch and delete states in batches
-        while True:
-            states = session.query(State)\
-                .filter(State.name.like('%a%')).limit(BATCH_SIZE).all()
-            if not states:
-                break
-            for state in states:
-                session.delete(state)
-            session.commit()
+    while True:
+        states = session.query(State)\
+            .filter(State.name.like('%a%')).limit(BATCH_SIZE).all()
+        if not states:
+            break
+        for state in states:
+            session.delete(state)
+    session.commit()
 
-    except Exception:
-        session.rollback()
-    finally:
+    # except Exception:
+        #session.rollback()
+    # finally:
         # Close the session
-        session.close()
+    session.close()
