@@ -1,21 +1,18 @@
 #!/usr/bin/python3
 """
-a script that list the content of a table in a database
-it take the user, passwd and database name as
-cmd line arg
+A script that updates the name of a State object in a database.
+It takes the user, password, and database name as command line arguments.
 """
 
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 import sys
 from urllib.parse import quote_plus
-from sqlalchemy.orm import sessionmaker
 
-# Connect & Create tables
 if __name__ == "__main__":
     """
-    connect to database
-    list all states in ASC order
+    Connect to database and update state name
     """
     user = sys.argv[1]
     # URL encode the password
@@ -28,8 +25,14 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    # Fetch the state with id 2
     state = session.query(State).filter(State.id == 2).first()
-    state.name = 'New Mexico'
-    session.commit()
-
-session.close()
+    
+    # Check if state exists
+    if state:
+        # Update the name of the state
+        state.name = 'New Mexico'
+        # Commit the changes
+        session.commit()
+    
+    session.close()
