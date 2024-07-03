@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+a script that creating a table in a database
+it take the user, passwd and database name as
+cmd line arg
+"""
+
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
@@ -8,6 +14,9 @@ from urllib.parse import quote_plus
 
 # Connect & Create tables
 if __name__ == "__main__":
+    """
+    connect to database and create Table
+    """
     user = sys.argv[1]
     # URL encode the password
     password = quote_plus(sys.argv[2])
