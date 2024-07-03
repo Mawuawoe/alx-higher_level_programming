@@ -28,6 +28,9 @@ if __name__ == "__main__":
     Base = declarative_base()
 
     class State(Base):
+        """
+        create Table
+        """
         __tablename__ = "states"
 
         id = Column(Integer, autoincrement=True,
