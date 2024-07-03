@@ -27,12 +27,12 @@ if __name__ == "__main__":
 
     # Fetch the state with id 2
     state = session.query(State).filter(State.id == 2).first()
-    
+
     # Check if state exists
     if state:
         # Update the name of the state
         state.name = 'New Mexico'
         # Commit the changes
         session.commit()
-    
+
     session.close()
