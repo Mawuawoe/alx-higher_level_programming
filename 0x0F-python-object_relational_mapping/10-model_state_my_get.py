@@ -15,13 +15,13 @@ from sqlalchemy.orm import sessionmaker
 if __name__ == "__main__":
     """
     connect to database
-    list all states that contain a
-    in ASC order
+    list all states in ASC order
     """
     user = sys.argv[1]
     # URL encode the password
     password = quote_plus(sys.argv[2])
     db = sys.argv[3]
+    stateName = sys.argv[4]
 
     db_url = f'mysql+mysqldb://{user}:{password}@localhost/{db}'
     engine = create_engine(db_url, pool_pre_ping=True)
@@ -29,11 +29,12 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter(State.name.like('%a%'))\
+    states = session.query(State).filter(State.name == stateName)\
         .order_by(State.id).all()
-    i = 1
-    for state in states:
-        print(f'{state.id}: {state.name}')
-        i = i + 1
+    if (states):
+        for state in states:
+            print(f'{state.id}')
+    else:
+        print('Not found')
 
     session.close()
