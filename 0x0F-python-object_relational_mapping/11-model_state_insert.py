@@ -33,10 +33,6 @@ if __name__ == "__main__":
     session.add(state_1)
     session.commit()
 
-    states = session.query(State)\
-        .order_by(State.id).all()
-
-    for state in states:
-        print(f'{state.id}: {state.name}')
+    print(state_1.id)
 
     session.close()
