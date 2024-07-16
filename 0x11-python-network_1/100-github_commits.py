@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""The Holberton School staff evaluates candidates applying for a back-end position with multiple technical challenges, like this one:
+"""
+The Holberton School staff evaluates
+candidates applying for a back-end position
+with multiple technical challenges,
+like this one:
 """
 import sys
 import requests
