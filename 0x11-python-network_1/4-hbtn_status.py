@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-"""https://alx-intranet.hbtn.io/status."""
+"""
+Write a Python script that fetches
+https://alx-intranet.hbtn.io/status
+You must use the package requests
+You are not allow to import packages
+other than requests
+"""
 import requests
 
 
